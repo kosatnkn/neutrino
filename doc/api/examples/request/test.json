@@ -1,0 +1,16 @@
+{
+	"vehicle":
+	{
+		"model": 1
+	},
+	"origin": {
+		"address": "Origin Address",
+		"longitude": 1.0,
+		"latitude": 1.0
+	},
+	"destination": {
+		"address": "Destination Address",
+		"longitude": 1.0,
+		"latitude": 1.0
+	}
+}

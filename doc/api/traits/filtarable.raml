@@ -1,0 +1,25 @@
+queryParameters:
+  filters:
+    displayName: Search Filters
+
+    description: |
+      Search filters that can be used to manipulate response dataset.
+      The filter is organized as follows.
+
+      `?filters=[{"field_1":"<field-name>", "value":<field-value>, "operator":<operator>},
+        {"field_2":"<field-name>", "value":<field-value>, "operator":<operator>},
+        ...]`
+
+      `<operator>` is an integer and used to indicate the operator to be used with the filter.
+      They are as follows.
+      - `1` : Equals
+      - `2` : Like
+      - `3` : Begins With
+      - `4` : Ends With
+      - `5` : Between
+
+    type: string
+    required: false
+
+    # NOTES:
+    #   - in description part end line with `two spaces` when you need a new line

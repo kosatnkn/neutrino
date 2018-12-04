@@ -1,0 +1,34 @@
+{
+  "name": "neutrino",
+  "version": "1.0.0",
+  "description": "A NodeJS Clean Architecture sample project",
+  "main": "app.js",
+  "scripts": {
+    "start": "node public/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "doc-generate": "npm run doc-raml-html && npm run doc-raml-flatten && npm run doc-raml-swagger",
+    "doc-raml-html": "raml2html ./doc/api/gis-api-doc.raml > ./public/doc/index.html",
+    "doc-raml-flatten": "node doc/api/doc-generator.js",
+    "doc-raml-swagger": "api-spec-converter ./doc/api/gis-api-doc.raml --from=raml --to=swagger_2 > ./public/doc/swagger/swagger.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kosatnkn/neutrino.git"
+  },
+  "author": "Kosala Tennakoon",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "colors": "^1.3.0",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "moment": "^2.22.2",
+    "pg": "^7.4.3",
+    "validate.js": "^0.12.0",
+    "winston": "^3.0.0"
+  },
+  "devDependencies": {
+    "api-spec-converter": "^2.7.8",
+    "flat-raml": "^1.2.3",
+    "raml2html": "^0.8.0"
+  }
+}

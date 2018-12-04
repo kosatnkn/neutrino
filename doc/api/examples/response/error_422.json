@@ -1,0 +1,7 @@
+{
+  "errors": {
+    "phone": [
+      "The phone has already been taken."
+    ]
+  }
+}

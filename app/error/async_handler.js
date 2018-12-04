@@ -1,0 +1,25 @@
+var formatter = require('./formatter');
+var logger = require('./../logger');
+
+
+/**
+ * Handle async error.
+ *
+ * @param err
+ * @param res
+ */
+function handle(err, res)
+{
+    var formattedError = formatter.format(err);
+
+    logger.error(err.stack);
+    res.status(formattedError.code).json(formattedError.message);
+}
+
+
+module.exports = function (app)
+{
+    app.set('async_error_handler', {
+        handle: handle
+    });
+};

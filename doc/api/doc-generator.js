@@ -1,6 +1,6 @@
 const flattener = require('flat-raml');
 
-var srcFile = './doc/api/gis-api-doc.raml';
+var srcFile = './doc/api/api-doc.raml';
 var dstFile = './public/doc/console/api-doc.raml';
 
 flattener.flatten(srcFile, dstFile)

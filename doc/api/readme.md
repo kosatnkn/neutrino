@@ -10,9 +10,9 @@ The API documentation is generated using the [raml2html](https://github.com/raml
 
 **Generate API Document**
 
-    $ raml2html ./doc/api/gis-api-doc.raml > ./public/doc/index.html
+    $ raml2html ./doc/api/api-doc.raml > ./public/doc/index.html
     
-(NOTE: In this case the input would be the `driver-api-doc.raml` which is the main access point for the RAML project. 
+(NOTE: In this case the input would be the `api-doc.raml` which is the main access point for the RAML project. 
        and the output would be `index.html` which is placed at `public\doc` folder)
 
 ### API Console

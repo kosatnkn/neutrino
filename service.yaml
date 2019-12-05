@@ -1,7 +1,7 @@
 apps:
   - script   : ./service.js
-    name     : 'geo-service-api'
+    name     : 'neutrino'
     exec_mode : fork
     merge-logs: true,
-    out_file: /var/log/gis-api/out.log
-    error_file: /var/log/gis-api/error.log
+    out_file: /var/log/neutrino/out.log
+    error_file: /var/log/neutrino/error.log

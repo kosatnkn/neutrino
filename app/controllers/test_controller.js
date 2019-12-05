@@ -1,6 +1,6 @@
 module.exports = function(app)
 {
-    var responseCodes = require('./../transport/response/codes');
+    const responseCodes = require('http-status-codes');
 
     var container = app.get('container');
     var validator = app.get('validator');
@@ -108,7 +108,7 @@ module.exports = function(app)
                 return;
             }
 
-            res.status(responseCodes.HTTP_OK).json(
+            res.status(responseCodes.OK).json(
                 responseMapper.map(
                     responseMapper.transform(result, testTransformer, true)
                 )

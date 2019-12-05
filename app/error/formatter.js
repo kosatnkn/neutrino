@@ -1,7 +1,5 @@
 const ErrorTypes = require('./types');
-const ResponseCodes = require('./../transport/response/codes');
-
-// TODO: remove enveloping
+const ResponseCodes = require('http-status-codes');
 
 /**
  * Format error.
@@ -54,7 +52,7 @@ function _formatDomainError(err)
     };
 
     return {
-        code: ResponseCodes.HTTP_BAD_REQUEST,
+        code: ResponseCodes.BAD_REQUEST,
         message: message
     };
 }
@@ -74,7 +72,7 @@ function _formatValidationError(err)
     };
 
     return {
-        code: ResponseCodes.HTTP_UNPROCESSABLE,
+        code: ResponseCodes.UNPROCESSABLE_ENTITY,
         message: details
     };
 }
@@ -105,7 +103,7 @@ function _formatServerError(err)
     };
 
     return {
-        code: ResponseCodes.HTTP_SERVER_ERROR,
+        code: ResponseCodes.INTERNAL_SERVER_ERROR,
         message: message
     };
 }
@@ -136,7 +134,7 @@ function _formatUnknownError(err)
     };
 
     return {
-        code: ResponseCodes.HTTP_SERVER_ERROR,
+        code: ResponseCodes.INTERNAL_SERVER_ERROR,
         message: message
     };
 }

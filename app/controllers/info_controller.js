@@ -1,5 +1,5 @@
 module.exports = function (app) {
-    const responseCodes = require('../transport/response/codes');
+    const responseCodes = require('http-status-codes');
 
     let container = app.get('container');
     // let validator = app.get('validator');
@@ -23,7 +23,7 @@ module.exports = function (app) {
             purpose: "NodeJS, Express REST API"
         }
 
-        res.status(responseCodes.HTTP_OK).json(
+        res.status(responseCodes.OK).json(
             responseMapper.map(
                 data
             )

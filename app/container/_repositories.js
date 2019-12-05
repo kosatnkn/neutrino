@@ -1,4 +1,4 @@
-var testRepository = require('./../../externals/data/repositories/postgres/test_repository');
+var testRepository = require('./../../externals/repositories/test_repository');
 
 function resolve(container)
 {

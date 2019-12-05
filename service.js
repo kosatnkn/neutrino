@@ -23,8 +23,7 @@ let metricsPath = process.env.APP_METRICS_ROUTE || '/metrics';
 let metricsServer = express();
 
 // create the toast message for application startup
-let toast = "GIS API" +
-    ", name - "  + process.env.APP_NAME +
+let toast = "name - "  + process.env.APP_NAME +
     ", port - " + process.env.APP_PORT +
     ", timezone - " + process.env.APP_TIMEZONE +
     ", mode - " + (process.env.APP_DEBUG === 'true' ? "DEBUG" : "PRODUCTION") +

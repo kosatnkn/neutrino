@@ -1,6 +1,7 @@
 const ErrorTypes = require('./types');
 const ResponseCodes = require('./../transport/response/codes');
 
+// TODO: remove enveloping
 
 /**
  * Format error.

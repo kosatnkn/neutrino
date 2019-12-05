@@ -1,5 +1,8 @@
+// TODO: look again. especially at the get pool method.
+
 module.exports = function (config)
 {
+    // known error codes sent from postgres
     const ErrorCodes = {
         CONNECTION_ERROR: '28P01',
         DATABASE_NOT_FOUND: '3D000',
@@ -18,6 +21,13 @@ module.exports = function (config)
     };
 
 
+    /**
+     * Run a query.
+     * 
+     * @param {*} query 
+     * @param {*} parameters 
+     * @param {*} resultCallback 
+     */
     function query(query, parameters, resultCallback)
     {
         var pool = _getPool();
@@ -33,19 +43,9 @@ module.exports = function (config)
         });
     }
 
-
-    function _getClient()
-    {
-        return new pg.Client({
-            user: _config.user,
-            host: _config.host,
-            database: _config.database,
-            password: _config.password,
-            port: _config.port
-        });
-    }
-
-
+    /**
+     * Get the database pool.
+     */
     function _getPool()
     {
         return new pg.Pool({
@@ -53,24 +53,28 @@ module.exports = function (config)
             host: _config.host,
             database: _config.database,
             password: _config.password,
-            port: _config.port
+            port: _config.port,
 
-            // // number of milliseconds to wait before timing out when connecting a new client
-            // // by default this is 0 which means no timeout
-            // connectionTimeoutMillis: 0,
-            //
-            // // number of milliseconds a client must sit idle in the pool and not be checked out
-            // // before it is disconnected from the backend and discarded
-            // // default is 10000 (10 seconds) - set to 0 to disable auto-disconnection of idle clients
-            // idleTimeoutMillis: 10000,
-            //
-            // // maximum number of clients the pool should contain
-            // // by default this is set to 10.
-            // max: 10
+            // number of milliseconds to wait before timing out when connecting a new client
+            // by default this is 0 which means no timeout
+            connectionTimeoutMillis: 0,
+            
+            // number of milliseconds a client must sit idle in the pool and not be checked out
+            // before it is disconnected from the backend and discarded
+            // default is 10000 (10 seconds) - set to 0 to disable auto-disconnection of idle clients
+            idleTimeoutMillis: 10000,
+            
+            // maximum number of clients the pool should contain
+            // by default this is set to 10.
+            max: 10
         });
     }
 
-
+    /**
+     * Translate a postgres error to a standard DBAdapter error.
+     * 
+     * @param {*} err 
+     */
     function _getError(err)
     {
         console.log(err);

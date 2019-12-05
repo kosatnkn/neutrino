@@ -1,2 +1,2 @@
-# neutrino
-NodeJS, Express RESTful API built using the Clean Architecture paradigm.
+# Neutrino
+NodeJS, Express REST API built using the Clean Architecture paradigm.

@@ -112,10 +112,10 @@ require('./app/error/async_handler')(app);
 */
 
 // check whether input is JSON
-// require('./app/middleware/reqest_type_middleware')(app);
+require('./app/middleware/request_check_middleware')(app);
 
-// pre process the request with additional details
-require('./app/middleware/pre_processing_middleware')(app);
+// alter the request with additional details
+require('./app/middleware/request_alter_middleware')(app);
 
 // enable JSON body parsing
 app.use(express.json());

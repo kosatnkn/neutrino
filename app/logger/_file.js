@@ -15,7 +15,7 @@
 var winston = require('winston');
 var moment = require('moment');
 
-const fileName = './logs/' + moment(moment()).format('YYYY-MM-DD') + '-error.log';
+const fileName = './logs/' + moment(moment()).format('YYYY-MM-DD') + '-log.log';
 const logger = winston.createLogger({
     level: 'debug',
     format: winston.format.combine(

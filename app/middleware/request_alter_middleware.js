@@ -1,4 +1,4 @@
-const serverError = require('./../error/server_error');
+const serverError = require('../error/server_error');
 let uuidv1 = require('uuid/v1');
 
 function handle(req, res, next)

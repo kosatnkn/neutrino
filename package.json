@@ -2,9 +2,9 @@
   "name": "neutrino",
   "version": "1.0.0",
   "description": "A NodeJS Clean Architecture sample project",
-  "main": "app.js",
+  "main": "service.js",
   "scripts": {
-    "start": "node public/app.js",
+    "start": "node service.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

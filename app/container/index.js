@@ -1,9 +1,8 @@
-var _adapters = require('./_adapters');
-var _repositories = require('./_repositories');
-var _services = require('./_services');
+const _adapters = require('./_adapters');
+const _repositories = require('./_repositories');
+const _services = require('./_services');
 
-var _container = {};
-
+let _container = {};
 
 /**
  * resolve all dependencies and return the container.
@@ -18,7 +17,6 @@ function _resolve()
     _repositories.resolve(_container);
     _services.resolve(_container);
 }
-
 
 module.exports = function (app)
 {

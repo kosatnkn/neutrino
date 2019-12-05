@@ -1,4 +1,4 @@
-var serverError = require('./../../../app/error/server_error');
+const serverError = require('./../../../app/error/server_error');
 
 function unknownError()
 {

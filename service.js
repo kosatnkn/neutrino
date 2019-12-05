@@ -8,11 +8,10 @@
  |
  */
 
-let express = require('express');
-let os = require('os');
-
-let app = require('./app');
-let logger = require('./app/logger');
+const express = require('express');
+const os = require('os');
+const app = require('./app');
+const logger = require('./app/logger');
 
 let isClusterMode = (process.env.APP_CLUSTER === 'true');
 
@@ -34,7 +33,8 @@ let toast = "name - "  + process.env.APP_NAME +
 // start the application in cluster mode
 if(isClusterMode)
 {
-    let cluster = require('cluster');
+    const cluster = require('cluster');
+
     let pids = [];
     let numCPUs = os.cpus().length;
 
@@ -76,7 +76,8 @@ if(isClusterMode)
         // export cluster metrics
         if(isMetricsEnabled)
         {
-            let AggregatorRegistry = require('prom-client').AggregatorRegistry;
+            const AggregatorRegistry = require('prom-client').AggregatorRegistry;
+            
             let aggregatorRegistry = new AggregatorRegistry();
 
             metricsServer.get(metricsPath, function(req, res)

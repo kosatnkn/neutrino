@@ -1,10 +1,8 @@
 module.exports = function(dbAdapter)
 {
-    var _dbAdapter = dbAdapter;
-
     function getUserList(resultCallback)
     {
-        _dbAdapter.query('SELECT * FROM test.user', [], function(err, result)
+        dbAdapter.query('SELECT * FROM test.user', [], function(err, result)
         {
             if(err)
             {

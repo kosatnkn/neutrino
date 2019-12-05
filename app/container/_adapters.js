@@ -1,4 +1,4 @@
-var postgres = require('./../../externals/adapters/db/postgres');
+const postgres = require('./../../externals/adapters/db/postgres');
 
 function resolve(container)
 {

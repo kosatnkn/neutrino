@@ -1,25 +1,16 @@
-// TODO: look again. especially at the get pool method.
-
 module.exports = function (config)
 {
+    // TODO: look again. especially at the get pool method.
+
+    const pg = require("pg");
+    const dbAdapterError = require('./postgres_error');
+
     // known error codes sent from postgres
     const ErrorCodes = {
         CONNECTION_ERROR: '28P01',
         DATABASE_NOT_FOUND: '3D000',
         CONNECTION_REFUSED: 'ECONNREFUSED'
     };
-
-    var pg = require("pg");
-    var dbAdapterError = require('./postgres_error');
-
-    var _config = {
-        host: config.host,
-        port: config.port,
-        database: config.database,
-        user: config.user,
-        password: config.password
-    };
-
 
     /**
      * Run a query.
@@ -30,7 +21,7 @@ module.exports = function (config)
      */
     function query(query, parameters, resultCallback)
     {
-        var pool = _getPool();
+        let pool = _getPool();
 
         pool.query(query, parameters, function(err, result)
         {
@@ -49,11 +40,11 @@ module.exports = function (config)
     function _getPool()
     {
         return new pg.Pool({
-            user: _config.user,
-            host: _config.host,
-            database: _config.database,
-            password: _config.password,
-            port: _config.port,
+            user: config.user,
+            host: config.host,
+            database: config.database,
+            password: config.password,
+            port: config.port,
 
             // number of milliseconds to wait before timing out when connecting a new client
             // by default this is 0 which means no timeout
@@ -77,8 +68,6 @@ module.exports = function (config)
      */
     function _getError(err)
     {
-        console.log(err);
-
         switch(err.code)
         {
             case ErrorCodes.CONNECTION_ERROR:
@@ -95,7 +84,6 @@ module.exports = function (config)
                 break;
         }
     }
-
 
     return {
         query: query

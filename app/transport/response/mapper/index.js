@@ -1,5 +1,5 @@
-var _mapper = require('./_mapper');
-var _transformer = require('./_transformer');
+const _mapper = require('./_mapper');
+const _transformer = require('./_transformer');
 
 module.exports = function (app)
 {

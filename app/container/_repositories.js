@@ -1,4 +1,4 @@
-var testRepository = require('./../../externals/repositories/test_repository');
+const testRepository = require('./../../externals/repositories/test_repository');
 
 function resolve(container)
 {

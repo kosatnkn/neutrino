@@ -1,8 +1,6 @@
 module.exports = function(testRepository)
 {
-    var testUseCaseErrors = require('./test_usecase_error');
-    var _testRepository = testRepository;
-
+    const testUseCaseErrors = require('./test_usecase_error');
 
     /**
      * Private method.
@@ -66,7 +64,7 @@ module.exports = function(testRepository)
      */
     function testMethodDatabase(resultCallback)
     {
-        _testRepository.getUserList(function (err, result)
+        testRepository.getUserList(function (err, result)
         {
             if(err)
             {

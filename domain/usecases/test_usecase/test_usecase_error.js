@@ -1,4 +1,4 @@
-var domainError = require('./../../errors/domain_error');
+const domainError = require('./../../errors/domain_error');
 
 function testError()
 {

@@ -1,6 +1,5 @@
-var formatter = require('./formatter');
-var logger = require('./../logger');
-
+const formatter = require('./formatter');
+const logger = require('./../logger');
 
 /**
  * Handle error.
@@ -13,7 +12,7 @@ var logger = require('./../logger');
  */
 function handle(err, req, res, next)
 {
-    var formattedError = formatter.format(err);
+    let formattedError = formatter.format(err);
 
     logger.error(err.stack);
     res.status(formattedError.code).json(formattedError.message);

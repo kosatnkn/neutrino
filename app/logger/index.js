@@ -1,5 +1,5 @@
-var _consoleLogger = require('./_console');
-var _fileLogger = require('./_file');
+const _consoleLogger = require('./_console');
+const _fileLogger = require('./_file');
 
 // TODO: config file logging using .env
 

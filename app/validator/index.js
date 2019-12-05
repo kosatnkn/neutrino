@@ -1,14 +1,14 @@
-var validationError = require('./validation_error');
-var validator = require('validate.js');
+const validationError = require('./validation_error');
+const validator = require('validate.js');
 
 
 function validate(data, rules)
 {
-    var details = validator.validate(data, rules);
+    let details = validator.validate(data, rules);
 
     if(details !== undefined)
     {
-        var err = validationError();
+        let err = validationError();
         err.details = details;
 
         throw err;

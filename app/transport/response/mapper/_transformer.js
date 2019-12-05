@@ -13,7 +13,7 @@ function transform(data, transformer, asCollection)
 
 function _transformCollection(data, transformer)
 {
-    var collection = [];
+    let collection = [];
 
     data.forEach(function(datum)
     {

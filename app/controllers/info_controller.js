@@ -1,14 +1,10 @@
-module.exports = function (app) {
+module.exports = function (app)
+{
     const responseCodes = require('http-status-codes');
-
-    let container = app.get('container');
-    // let validator = app.get('validator');
-    let responseMapper = app.get('response_mapper');
-    // let asyncErrorHandler = app.get('async_error_handler');
-
-    // let logger = require('../logger');
-    // let Context = require('../transport/request/context');
-
+    
+    const container = app.get('container');
+    const responseMapper = app.get('response_mapper');
+    
     /**
      * Get API information
      *

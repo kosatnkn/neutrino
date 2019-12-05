@@ -6,7 +6,6 @@ const ErrorTypes = {
     UNKNOWN_ERROR: "UnknownException"
 };
 
-
 /**
  * Merge two objects together.
  *
@@ -17,7 +16,7 @@ const ErrorTypes = {
  */
 function _merge(obj, src)
 {
-    for (var key in src)
+    for (let key in src)
     {
         if (src.hasOwnProperty(key))
         {

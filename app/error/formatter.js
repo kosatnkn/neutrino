@@ -36,7 +36,7 @@ function format(err)
  */
 function _formatDomainError(err)
 {
-    var error = {
+    let error = {
         "message": err.message,
         "code": err.code,
         "type": err.name
@@ -67,7 +67,7 @@ function _formatDomainError(err)
  */
 function _formatValidationError(err)
 {
-    var details = {
+    let details = {
         "errors": err.details
     };
 
@@ -87,7 +87,7 @@ function _formatValidationError(err)
  */
 function _formatServerError(err)
 {
-    var error = {
+    let error = {
         "message": err.message,
         "code": err.code,
         "type": err.name
@@ -98,7 +98,7 @@ function _formatServerError(err)
         error.trace = err.stack;
     }
 
-    var message = {
+    let message = {
         "errors": [error]
     };
 
@@ -118,7 +118,7 @@ function _formatServerError(err)
  */
 function _formatUnknownError(err)
 {
-    var error = {
+    let error = {
         "message": err.message,
         "code": err.code,
         "type": err.name
@@ -129,7 +129,7 @@ function _formatUnknownError(err)
         error.trace = err.stack;
     }
 
-    var message = {
+    let message = {
         "errors": [error]
     };
 

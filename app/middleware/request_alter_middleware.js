@@ -1,5 +1,5 @@
 const serverError = require('../error/server_error');
-let uuidv1 = require('uuid/v1');
+const uuidv1 = require('uuid/v1');
 
 function handle(req, res, next)
 {

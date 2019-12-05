@@ -2,19 +2,19 @@ module.exports = function(app)
 {
     const responseCodes = require('http-status-codes');
 
-    var container = app.get('container');
-    var validator = app.get('validator');
-    var responseMapper = app.get('response_mapper');
-    var asyncErrorHandler = app.get('async_error_handler');
+    const container = app.get('container');
+    const validator = app.get('validator');
+    const responseMapper = app.get('response_mapper');
+    const asyncErrorHandler = app.get('async_error_handler');
 
     // entities ___
-    var Test = require('./../../domain/entities/test_entity');
+    const Test = require('./../../domain/entities/test_entity');
 
     // transformers ___
-    var testTransformer = require('./../transformers/test_transformer');
+    const testTransformer = require('./../transformers/test_transformer');
 
     // constructor ___
-    var testUseCase = require('./../../domain/usecases/test_usecase/test_usecase')(
+    const testUseCase = require('./../../domain/usecases/test_usecase/test_usecase')(
         container.repositories.test
     );
 
@@ -27,7 +27,7 @@ module.exports = function(app)
      */
     function testControllerMethod(req, res)
 	{
-	    test = new Test;
+	    let test = new Test;
 	    test.firstName = "First";
 	    test.lastName = "Last";
 
@@ -64,8 +64,8 @@ module.exports = function(app)
             }
         };
 
-        var data = req.body;
-        var valid = validator.validate(data, rules);
+        let data = req.body;
+        let valid = validator.validate(data, rules);
 
         res.send(valid);
     }

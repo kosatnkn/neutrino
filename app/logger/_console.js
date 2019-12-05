@@ -1,7 +1,7 @@
 /**
  * Console logger will log to the console.
  */
-var colors = require('colors');
+const colors = require('colors');
 
 colors.setTheme({
     debug: 'blue',

@@ -1,8 +1,21 @@
-const serverError = require('./../error/server_error');
+const serverError = require('../error/server_error');
 
-function _handle(req, res, next)
+const omittedRoutes = [
+    '/metrics',
+    '/favicon.ico'
+];
+
+function handle(req, res, next)
 {
-    if(req.get('content-type') !== 'application/json')
+    // omitted out routes
+    if(omittedRoutes.indexOf(req.url) > -1)
+    {
+        next();
+
+        return;
+    }
+
+    if('application/json' !== req.get('content-type'))
     {
         throw serverError("API only accepts JSON");
     }
@@ -12,5 +25,5 @@ function _handle(req, res, next)
 
 module.exports = function (app)
 {
-    app.use(_handle);
+    app.use(handle);
 };

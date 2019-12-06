@@ -11,6 +11,7 @@
 const os = require('os');
 const app = require('./app');
 const logger = require('./app/logger');
+const splash = require('./app/splash');
 
 let isMetricsEnabled = (process.env.APP_METRICS === 'true');
 let metrics = null;
@@ -27,17 +28,9 @@ if(isMetricsEnabled)
 
 let isClusterMode = (process.env.APP_CLUSTER === 'true');
 
-
-let splash = 
-` _   _            _        _             
- | \ | |          | |      (_)            
- |  \| | ___ _   _| |_ _ __ _ _ __   ___  
- | .   |/ _ \ | | | __| '__| | '_ \ / _ \
- | |\  |  __/ |_| | |_| |  | | | | | (_) |
- |_| \_|\___|\__,_|\__|_|  |_|_| |_|\___/ 
- `;
-
 let info = `
+${splash.Default}
+
 Service started on port ${process.env.APP_PORT}
 Service timezone is '${process.env.APP_TIMEZONE}'
 Running on '${process.env.APP_DEBUG === 'true' ? "DEBUG" : "PRODUCTION"}' mode`;
@@ -56,7 +49,6 @@ if(isClusterMode)
 
     if(cluster.isMaster)
     {
-        logger.prompt(splash);
         logger.prompt(info);
         
         // fork workers
@@ -98,17 +90,15 @@ if(isClusterMode)
 }
 
 // start application in single threaded mode
-
-logger.prompt(splash);
 logger.prompt(info);
 
-// export single worker metrics
+// export single threaded mode metrics
 if(isMetricsEnabled)
 {
     metrics.startMetricServer();
 }
 
-// Listen for requests
+// listen for requests
 app.listen(process.env.APP_PORT, function ()
 {
     logger.prompt(`Process ID: ${process.pid}`);

@@ -1,7 +1,5 @@
 module.exports = function (config)
 {
-    // TODO: look again. especially at the get pool method.
-
     const pg = require("pg");
     const dbAdapterError = require('./postgres_error');
 
@@ -12,6 +10,8 @@ module.exports = function (config)
         CONNECTION_REFUSED: 'ECONNREFUSED'
     };
 
+    let pool = _getPool(config);
+
     /**
      * Run a query.
      * 
@@ -21,8 +21,6 @@ module.exports = function (config)
      */
     function query(query, parameters, resultCallback)
     {
-        let pool = _getPool();
-
         pool.query(query, parameters, function(err, result)
         {
             if(err)
@@ -37,7 +35,7 @@ module.exports = function (config)
     /**
      * Get the database pool.
      */
-    function _getPool()
+    function _getPool(config)
     {
         return new pg.Pool({
             user: config.user,

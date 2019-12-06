@@ -1,8 +1,6 @@
 const _consoleLogger = require('./_console');
 const _fileLogger = require('./_file');
 
-// TODO: config file logging using .env
-
 function debug(message)
 {
     _consoleLogger.debug(message);

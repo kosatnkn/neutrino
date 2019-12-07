@@ -1,6 +1,7 @@
-var formatter = require('./formatter');
-var logger = require('./../logger');
+"use strict";
 
+const formatter = require('./formatter');
+const logger = require('./../logger');
 
 /**
  * Handle error.
@@ -11,9 +12,9 @@ var logger = require('./../logger');
  * @param next
  * @private
  */
-function handle(err, req, res, next)
-{
-    var formattedError = formatter.format(err);
+function handle(err, req, res, next) {
+    
+    let formattedError = formatter.format(err);
 
     logger.error(err.stack);
     res.status(formattedError.code).json(formattedError.message);
@@ -22,7 +23,6 @@ function handle(err, req, res, next)
 }
 
 
-module.exports = function (app)
-{
+module.exports = (app) => {
     app.use(handle);
 };

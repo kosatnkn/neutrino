@@ -1,5 +1,7 @@
-function map(data)
-{
+"use strict";
+
+function map(data) {
+    
     return {
         data: data
     }

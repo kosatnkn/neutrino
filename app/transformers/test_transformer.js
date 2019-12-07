@@ -1,5 +1,7 @@
-function transform(datum)
-{
+"use strict";
+
+function transform(datum) {
+    
     return {
         testId: datum.id,
         testName: datum.name

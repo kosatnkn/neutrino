@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  * File logger will log to a file in storage.
  *
@@ -12,10 +14,10 @@
  *      debug   = 4
  *      silly   = 5
  */
-var winston = require('winston');
-var moment = require('moment');
+const winston = require('winston');
+const moment = require('moment');
 
-const fileName = './logs/' + moment(moment()).format('YYYY-MM-DD') + '-error.log';
+const fileName = './logs/' + moment(moment()).format('YYYY-MM-DD') + '-log.log';
 const logger = winston.createLogger({
     level: 'debug',
     format: winston.format.combine(
@@ -26,33 +28,27 @@ const logger = winston.createLogger({
     ]
 });
 
-function error(message)
-{
+function error(message) {
     logger.error(message);
 }
 
-function warn(message)
-{
+function warn(message) {
     logger.warn(message);
 }
 
-function info(message)
-{
+function info(message) {
     logger.info(message);
 }
 
-function help(message)
-{
+function help(message) {
     logger.verbose(message);
 }
 
-function debug(message)
-{
+function debug(message) {
     logger.debug(message);
 }
 
-function prompt(message)
-{
+function prompt(message) {
     logger.verbose(message);
 }
 

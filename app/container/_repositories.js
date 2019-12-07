@@ -1,7 +1,9 @@
-var testRepository = require('./../../externals/data/repositories/postgres/test_repository');
+"use strict";
 
-function resolve(container)
-{
+const testRepository = require('./../../externals/repositories/test_repository');
+
+function resolve(container) {
+    
     container.repositories = {
         test: testRepository(container.adapters.db)
     }

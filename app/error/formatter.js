@@ -1,6 +1,7 @@
-const ErrorTypes = require('./types');
-const ResponseCodes = require('./../transport/response/codes');
+"use strict";
 
+const ErrorTypes = require('./types');
+const ResponseCodes = require('http-status-codes');
 
 /**
  * Format error.
@@ -9,10 +10,10 @@ const ResponseCodes = require('./../transport/response/codes');
  * @returns {{code, message}|*}
  * @private
  */
-function format(err)
-{
-    switch(err.name)
-    {
+function format(err) {
+
+    switch(err.name){
+
         case ErrorTypes.DOMAIN_ERROR:
             return _formatDomainError(err);
 
@@ -27,7 +28,6 @@ function format(err)
     }
 }
 
-
 /**
  * Format domain error.
  *
@@ -37,14 +37,13 @@ function format(err)
  */
 function _formatDomainError(err)
 {
-    var error = {
+    let error = {
         "message": err.message,
         "code": err.code,
         "type": err.name
     };
 
-    if(process.env.APP_DEBUG === 'true')
-    {
+    if(process.env.APP_DEBUG === 'true') {
         error.trace = err.stack;
     }
 
@@ -53,11 +52,10 @@ function _formatDomainError(err)
     };
 
     return {
-        code: ResponseCodes.HTTP_BAD_REQUEST,
+        code: ResponseCodes.BAD_REQUEST,
         message: message
     };
 }
-
 
 /**
  * Format validation error.
@@ -66,18 +64,17 @@ function _formatDomainError(err)
  * @returns {{code: number, message: string}}
  * @private
  */
-function _formatValidationError(err)
-{
-    var details = {
+function _formatValidationError(err) {
+
+    let details = {
         "errors": err.details
     };
 
     return {
-        code: ResponseCodes.HTTP_UNPROCESSABLE,
+        code: ResponseCodes.UNPROCESSABLE_ENTITY,
         message: details
     };
 }
-
 
 /**
  * Format server error.
@@ -86,29 +83,27 @@ function _formatValidationError(err)
  * @returns {{code: number, message: string}}
  * @private
  */
-function _formatServerError(err)
-{
-    var error = {
+function _formatServerError(err) {
+
+    let error = {
         "message": err.message,
         "code": err.code,
         "type": err.name
     };
 
-    if(process.env.APP_DEBUG === 'true')
-    {
+    if(process.env.APP_DEBUG === 'true') {
         error.trace = err.stack;
     }
 
-    var message = {
+    let message = {
         "errors": [error]
     };
 
     return {
-        code: ResponseCodes.HTTP_SERVER_ERROR,
+        code: ResponseCodes.INTERNAL_SERVER_ERROR,
         message: message
     };
 }
-
 
 /**
  * Format unknown error.
@@ -117,29 +112,27 @@ function _formatServerError(err)
  * @returns {{code: number, message: string}}
  * @private
  */
-function _formatUnknownError(err)
-{
-    var error = {
+function _formatUnknownError(err) {
+
+    let error = {
         "message": err.message,
         "code": err.code,
         "type": err.name
     };
 
-    if(process.env.APP_DEBUG === 'true')
-    {
+    if(process.env.APP_DEBUG === 'true') {
         error.trace = err.stack;
     }
 
-    var message = {
+    let message = {
         "errors": [error]
     };
 
     return {
-        code: ResponseCodes.HTTP_SERVER_ERROR,
+        code: ResponseCodes.INTERNAL_SERVER_ERROR,
         message: message
     };
 }
-
 
 module.exports = {
     format: format

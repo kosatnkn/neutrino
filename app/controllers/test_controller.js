@@ -1,23 +1,24 @@
-module.exports = function(app)
-{
-    var responseCodes = require('./../transport/response/codes');
+"use strict";
 
-    var container = app.get('container');
-    var validator = app.get('validator');
-    var responseMapper = app.get('response_mapper');
-    var asyncErrorHandler = app.get('async_error_handler');
+module.exports = (app) => {
+    
+    const responseCodes = require('http-status-codes');
+
+    const container = app.get('container');
+    const validator = app.get('validator');
+    const responseMapper = app.get('response_mapper');
+    const asyncErrorHandler = app.get('async_error_handler');
 
     // entities ___
-    var Test = require('./../../domain/entities/test_entity');
+    const Test = require('./../../domain/entities/test_entity');
 
     // transformers ___
-    var testTransformer = require('./../transformers/test_transformer');
+    const testTransformer = require('./../transformers/test_transformer');
 
     // constructor ___
-    var testUseCase = require('./../../domain/usecases/test_usecase/test_usecase')(
+    const testUseCase = require('./../../domain/usecases/test_usecase/test_usecase')(
         container.repositories.test
     );
-
 
     /**
      * Demonstrate the usage of an entity to map all data to be sent to a use case.
@@ -25,15 +26,14 @@ module.exports = function(app)
      * @param req
      * @param res
      */
-    function testControllerMethod(req, res)
-	{
-	    test = new Test;
-	    test.firstName = "First";
-	    test.lastName = "Last";
+    function testControllerMethod(req, res) {
 
-	    res.send(testUseCase.testMethodThree(test));
+        let test = new Test;
+        test.firstName = "First";
+        test.lastName = "Last";
+
+        res.send(testUseCase.testMethodThree(test));
 	}
-
 
     /**
      * Demonstrate the usage of synchronous error handling.
@@ -41,11 +41,10 @@ module.exports = function(app)
      * @param req
      * @param res
      */
-	function testControllerErrorMethod(req, res)
-	{
+	function testControllerErrorMethod(req, res) {
+
         testUseCase.testMethodError();
 	}
-
 
     /**
      * Demonstrate the usage of a request validator.
@@ -53,8 +52,8 @@ module.exports = function(app)
      * @param req
      * @param res
      */
-    function testControllerValidateMethod(req, res)
-    {
+    function testControllerValidateMethod(req, res) {
+
         const rules = {
             user: {
                 presence: true
@@ -64,12 +63,11 @@ module.exports = function(app)
             }
         };
 
-        var data = req.body;
-        var valid = validator.validate(data, rules);
+        let data = req.body;
+        let valid = validator.validate(data, rules);
 
         res.send(valid);
     }
-
 
     /**
      * Demonstrate communicating with a database asynchronously.
@@ -77,12 +75,12 @@ module.exports = function(app)
      * @param req
      * @param res
      */
-    function testDatabase(req, res)
-    {
-        testUseCase.testMethodDatabase(function (err, result)
-        {
-            if(err)
-            {
+    function testDatabase(req, res) {
+
+        testUseCase.testMethodDatabase(function (err, result) {
+
+            if(err) {
+
                 asyncErrorHandler.handle(err, res);
                 return;
             }
@@ -91,24 +89,23 @@ module.exports = function(app)
         });
     }
 
-
     /**
      * Demonstrate data transformation.
      *
      * @param req
      * @param res
      */
-    function testTransformData(req, res)
-    {
-        testUseCase.testMethodDatabase(function (err, result)
-        {
-            if(err)
-            {
+    function testTransformData(req, res) {
+
+        testUseCase.testMethodDatabase((err, result) => {
+
+            if(err) {
+
                 asyncErrorHandler.handle(err, res);
                 return;
             }
 
-            res.status(responseCodes.HTTP_OK).json(
+            res.status(responseCodes.OK).json(
                 responseMapper.map(
                     responseMapper.transform(result, testTransformer, true)
                 )
@@ -116,10 +113,9 @@ module.exports = function(app)
         });
     }
 
-
 	return {
-	    testControllerMethod: testControllerMethod,
-	    testControllerErrorMethod: testControllerErrorMethod,
+        testControllerMethod: testControllerMethod,
+        testControllerErrorMethod: testControllerErrorMethod,
         testControllerValidateMethod: testControllerValidateMethod,
         testDatabase: testDatabase,
         testTransformData: testTransformData

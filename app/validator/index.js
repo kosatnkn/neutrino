@@ -1,14 +1,15 @@
-var validationError = require('./validation_error');
-var validator = require('validate.js');
+"use strict";
 
+const validationError = require('./validation_error');
+const validator = require('validate.js');
 
-function validate(data, rules)
-{
-    var details = validator.validate(data, rules);
+function validate(data, rules) {
 
-    if(details !== undefined)
-    {
-        var err = validationError();
+    let details = validator.validate(data, rules);
+
+    if(details !== undefined) {
+        
+        let err = validationError();
         err.details = details;
 
         throw err;
@@ -18,8 +19,8 @@ function validate(data, rules)
 }
 
 
-module.exports = function (app)
-{
+module.exports = (app) => {
+    
     app.set('validator', {
         validate: validate
     });

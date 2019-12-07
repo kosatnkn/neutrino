@@ -1,4 +1,9 @@
 /.idea
 node_modules
+/coverage
 .env
-package-lock.json
+.vscode/
+/package-lock.json
+
+sonar-scan.sh
+.scannerwork

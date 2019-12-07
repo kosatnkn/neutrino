@@ -1,5 +1,7 @@
-function resolve(container)
-{
+"use strict";
+
+function resolve(container) {
+    
     container.services = {
         service: "service"
     }

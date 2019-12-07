@@ -1,6 +1,7 @@
-var formatter = require('./formatter');
-var logger = require('./../logger');
+"use strict";
 
+const formatter = require('./formatter');
+const logger = require('./../logger');
 
 /**
  * Handle async error.
@@ -8,17 +9,17 @@ var logger = require('./../logger');
  * @param err
  * @param res
  */
-function handle(err, res)
-{
-    var formattedError = formatter.format(err);
+function handle(err, res) {
+    
+    let formattedError = formatter.format(err);
 
     logger.error(err.stack);
     res.status(formattedError.code).json(formattedError.message);
 }
 
 
-module.exports = function (app)
-{
+module.exports = (app) => {
+    
     app.set('async_error_handler', {
         handle: handle
     });

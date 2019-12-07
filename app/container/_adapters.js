@@ -1,7 +1,9 @@
-var postgres = require('./../../externals/adapters/db/postgres');
+"use strict";
 
-function resolve(container)
-{
+const postgres = require('./../../externals/adapters/db/postgres');
+
+function resolve(container) {
+    
     container.adapters = {
         db: postgres({
             host: process.env.DB_POSTGRES_HOST,

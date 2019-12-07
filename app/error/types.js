@@ -1,3 +1,5 @@
+"use strict";
+
 const DomainErrorTypes = require('./../../domain/errors/types');
 
 const ErrorTypes = {
@@ -5,7 +7,6 @@ const ErrorTypes = {
     VALIDATION_ERROR: "ValidationException",
     UNKNOWN_ERROR: "UnknownException"
 };
-
 
 /**
  * Merge two objects together.
@@ -15,12 +16,11 @@ const ErrorTypes = {
  * @returns {*}
  * @private
  */
-function _merge(obj, src)
-{
-    for (var key in src)
-    {
-        if (src.hasOwnProperty(key))
-        {
+function _merge(obj, src) {
+
+    for (let key in src) {
+
+        if (src.hasOwnProperty(key)) {
             obj[key] = src[key];
         }
     }

@@ -1,8 +1,10 @@
+"use strict";
+
 const ErrorTypes = require('./../error/types');
 
-module.exports = function ()
-{
-    var err = new Error();
+module.exports = () => {
+    
+    let err = new Error();
     err.name = ErrorTypes.VALIDATION_ERROR;
 
     return err;

@@ -1,7 +1,8 @@
-var domainError = require('./../../errors/domain_error');
+"use strict";
 
-function testError()
-{
+const domainError = require('./../../errors/domain_error');
+
+function testError() {
     return domainError("test error", 0);
 }
 

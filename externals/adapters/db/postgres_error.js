@@ -1,17 +1,16 @@
-var serverError = require('./../../../app/error/server_error');
+"use strict";
 
-function unknownError()
-{
+const serverError = require('./../../../app/error/server_error');
+
+function unknownError() {
     return serverError("Unknown database adapter error", 0);
 }
 
-function connectionError()
-{
+function connectionError() {
     return serverError("Error connecting to database", 0);
 }
 
-function queryExecutionError()
-{
+function queryExecutionError() {
     return serverError("Error executing query", 0);
 }
 

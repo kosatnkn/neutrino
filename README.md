@@ -17,7 +17,7 @@ A REST API base that is written in **NodeJS** using the **Clean Architecture** p
 
 Clone Neutrino
 ```bash
-    git clone https://github.com/kosatnkn/neutrino.git
+    git clone https://github.com/kosatnkn/neutrino.git <project_name>
 ```
 
 Start by changing following files to suit your needs

@@ -1,7 +1,7 @@
 "use strict";
 
-module.exports = function (app)
-{
+module.exports = (app) => {
+    
     const responseCodes = require('http-status-codes');
     
     const responseMapper = app.get('response_mapper');
@@ -12,8 +12,8 @@ module.exports = function (app)
      * @param req
      * @param res
      */
-    function getInfo(req, res)
-    {
+    function getInfo(req, res) {
+
         let data = {
             name: "Neutrino",
             version: "v1.0.0",

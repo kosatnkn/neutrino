@@ -43,8 +43,8 @@ if(process.env.APP_METRICS === 'true')
     let options = {
         accuracies: ['s'],
         metricTypes: ['httpRequestsTotal', 'httpRequestsHistogram'],
-        normalizePath: function (path)
-        {
+        normalizePath: (path) => {
+            
             // remove query parameters from path
             path = path.split('?', 1)[0];
 

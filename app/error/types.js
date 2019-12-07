@@ -16,12 +16,11 @@ const ErrorTypes = {
  * @returns {*}
  * @private
  */
-function _merge(obj, src)
-{
-    for (let key in src)
-    {
-        if (src.hasOwnProperty(key))
-        {
+function _merge(obj, src) {
+
+    for (let key in src) {
+
+        if (src.hasOwnProperty(key)) {
             obj[key] = src[key];
         }
     }

@@ -3,23 +3,24 @@
 /*
 * Create dedicated HTTP server to expose application metrics.
 */
-module.exports = function(config)
-{
-    const express = require('express');
-    const logger = require('./app/logger');
+module.exports = (config) => {
 
+    const express = require('express');
+    const httpStatus = require('http-status-codes')
+    const logger = require('./app/logger');
+    
     let metricsServer = express();
 
     /**
      * Start a metric server for a single threaded service.
      */
-    function startMetricServer()
-    {
+    function startMetricServer() {
+
         const { getContentType, getSummary } = require('@promster/express');
 
-        metricsServer.get(config.path, function(req, res)
-        {
-            res.statusCode = 200;
+        metricsServer.get(config.path, (req, res) => {
+
+            res.statusCode = httpStatus.OK;
 
             res.setHeader('Content-Type', getContentType());
             res.end(getSummary());
@@ -34,18 +35,17 @@ module.exports = function(config)
     /**
      * Start a metric server for clustered service.
      */
-    function startClusterMetricServer()
-    {
+    function startClusterMetricServer() {
+
         const AggregatorRegistry = require('prom-client').AggregatorRegistry;
             
         let aggregatorRegistry = new AggregatorRegistry();
 
-        metricsServer.get(config.path, function(req, res)
-        {
-            aggregatorRegistry.clusterMetrics(function(err, metrics)
-            {
-                if(err)
-                {
+        metricsServer.get(config.path, (req, res) => {
+
+            aggregatorRegistry.clusterMetrics((err, metrics) => {
+
+                if(err) {
                     logger.error(err);
                 }
 

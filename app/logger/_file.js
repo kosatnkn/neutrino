@@ -28,33 +28,27 @@ const logger = winston.createLogger({
     ]
 });
 
-function error(message)
-{
+function error(message) {
     logger.error(message);
 }
 
-function warn(message)
-{
+function warn(message) {
     logger.warn(message);
 }
 
-function info(message)
-{
+function info(message) {
     logger.info(message);
 }
 
-function help(message)
-{
+function help(message) {
     logger.verbose(message);
 }
 
-function debug(message)
-{
+function debug(message) {
     logger.debug(message);
 }
 
-function prompt(message)
-{
+function prompt(message) {
     logger.verbose(message);
 }
 

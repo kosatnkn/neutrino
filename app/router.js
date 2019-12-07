@@ -1,7 +1,7 @@
 "use strict";
 
-module.exports = function (app)
-{
+module.exports = (app) => {
+    
     // constructor ___
     const infoController = require('./controllers/info_controller')(app);
     const testController = require('./controllers/test_controller')(app);

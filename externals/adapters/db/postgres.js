@@ -1,7 +1,7 @@
 "use strict";
 
-module.exports = function (config)
-{
+module.exports = (config) => {
+    
     const pg = require("pg");
     const dbAdapterError = require('./postgres_error');
 
@@ -21,12 +21,11 @@ module.exports = function (config)
      * @param {*} parameters 
      * @param {*} resultCallback 
      */
-    function query(query, parameters, resultCallback)
-    {
-        pool.query(query, parameters, function(err, result)
-        {
-            if(err)
-            {
+    function query(query, parameters, resultCallback) {
+
+        pool.query(query, parameters, (err, result) => {
+            
+            if(err) {
                 return resultCallback(_getError(err), null);
             }
 
@@ -37,8 +36,8 @@ module.exports = function (config)
     /**
      * Get the database pool.
      */
-    function _getPool(config)
-    {
+    function _getPool(config) {
+
         return new pg.Pool({
             user: config.user,
             host: config.host,
@@ -66,10 +65,10 @@ module.exports = function (config)
      * 
      * @param {*} err 
      */
-    function _getError(err)
-    {
-        switch(err.code)
-        {
+    function _getError(err) {
+
+        switch(err.code) {
+            
             case ErrorCodes.CONNECTION_ERROR:
                 return dbAdapterError.connectionError();
             case ErrorCodes.CONNECTION_REFUSED:

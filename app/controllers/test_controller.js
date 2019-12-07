@@ -1,7 +1,7 @@
 "use strict";
 
-module.exports = function(app)
-{
+module.exports = (app) => {
+    
     const responseCodes = require('http-status-codes');
 
     const container = app.get('container');
@@ -20,15 +20,14 @@ module.exports = function(app)
         container.repositories.test
     );
 
-
     /**
      * Demonstrate the usage of an entity to map all data to be sent to a use case.
      *
      * @param req
      * @param res
      */
-    function testControllerMethod(req, res)
-	{
+    function testControllerMethod(req, res) {
+
         let test = new Test;
         test.firstName = "First";
         test.lastName = "Last";
@@ -36,18 +35,16 @@ module.exports = function(app)
         res.send(testUseCase.testMethodThree(test));
 	}
 
-
     /**
      * Demonstrate the usage of synchronous error handling.
      *
      * @param req
      * @param res
      */
-	function testControllerErrorMethod(req, res)
-	{
+	function testControllerErrorMethod(req, res) {
+
         testUseCase.testMethodError();
 	}
-
 
     /**
      * Demonstrate the usage of a request validator.
@@ -55,8 +52,8 @@ module.exports = function(app)
      * @param req
      * @param res
      */
-    function testControllerValidateMethod(req, res)
-    {
+    function testControllerValidateMethod(req, res) {
+
         const rules = {
             user: {
                 presence: true
@@ -72,19 +69,18 @@ module.exports = function(app)
         res.send(valid);
     }
 
-
     /**
      * Demonstrate communicating with a database asynchronously.
      *
      * @param req
      * @param res
      */
-    function testDatabase(req, res)
-    {
-        testUseCase.testMethodDatabase(function (err, result)
-        {
-            if(err)
-            {
+    function testDatabase(req, res) {
+
+        testUseCase.testMethodDatabase(function (err, result) {
+
+            if(err) {
+
                 asyncErrorHandler.handle(err, res);
                 return;
             }
@@ -93,19 +89,18 @@ module.exports = function(app)
         });
     }
 
-
     /**
      * Demonstrate data transformation.
      *
      * @param req
      * @param res
      */
-    function testTransformData(req, res)
-    {
-        testUseCase.testMethodDatabase(function (err, result)
-        {
-            if(err)
-            {
+    function testTransformData(req, res) {
+
+        testUseCase.testMethodDatabase((err, result) => {
+
+            if(err) {
+
                 asyncErrorHandler.handle(err, res);
                 return;
             }
@@ -117,7 +112,6 @@ module.exports = function(app)
             );
         });
     }
-
 
 	return {
         testControllerMethod: testControllerMethod,

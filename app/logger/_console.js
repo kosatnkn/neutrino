@@ -14,33 +14,27 @@ colors.setTheme({
     warn: 'yellow'
 });
 
-function debug(message)
-{
+function debug(message) {
     console.log(message.debug);
 }
 
-function error(message)
-{
+function error(message) {
     console.log(message.error);
 }
 
-function help(message)
-{
+function help(message) {
     console.log(message.help);
 }
 
-function info(message)
-{
+function info(message) {
     console.log(message.info);
 }
 
-function prompt(message)
-{
+function prompt(message) {
     console.log(message.prompt);
 }
 
-function warn(message)
-{
+function warn(message) {
     console.log(message.warn);
 }
 

@@ -3,8 +3,8 @@
 const _mapper = require('./_mapper');
 const _transformer = require('./_transformer');
 
-module.exports = function (app)
-{
+module.exports = (app) => {
+    
     app.set('response_mapper', {
         map: _mapper.map,
         transform: _transformer.transform

@@ -9,8 +9,8 @@ const logger = require('./../logger');
  * @param err
  * @param res
  */
-function handle(err, res)
-{
+function handle(err, res) {
+    
     let formattedError = formatter.format(err);
 
     logger.error(err.stack);
@@ -18,8 +18,8 @@ function handle(err, res)
 }
 
 
-module.exports = function (app)
-{
+module.exports = (app) => {
+    
     app.set('async_error_handler', {
         handle: handle
     });

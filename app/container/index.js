@@ -12,16 +12,16 @@ let _container = {};
  * @returns _container
  * @private
  */
-function _resolve()
-{
+function _resolve() {
+    
     // low level dependencies need to be resolved first
     _adapters.resolve(_container);
     _repositories.resolve(_container);
     _services.resolve(_container);
 }
 
-module.exports = function (app)
-{
+module.exports = (app) => {
+
     _resolve();
     app.set('container', _container);
 };

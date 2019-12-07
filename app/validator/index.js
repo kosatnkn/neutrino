@@ -3,12 +3,12 @@
 const validationError = require('./validation_error');
 const validator = require('validate.js');
 
-function validate(data, rules)
-{
+function validate(data, rules) {
+
     let details = validator.validate(data, rules);
 
-    if(details !== undefined)
-    {
+    if(details !== undefined) {
+        
         let err = validationError();
         err.details = details;
 
@@ -19,8 +19,8 @@ function validate(data, rules)
 }
 
 
-module.exports = function (app)
-{
+module.exports = (app) => {
+    
     app.set('validator', {
         validate: validate
     });

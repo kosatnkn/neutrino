@@ -2,8 +2,8 @@
 
 const testRepository = require('./../../externals/repositories/test_repository');
 
-function resolve(container)
-{
+function resolve(container) {
+    
     container.repositories = {
         test: testRepository(container.adapters.db)
     }

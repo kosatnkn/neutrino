@@ -2,8 +2,8 @@
 
 const ErrorTypes = require('./types');
 
-module.exports = function (message, code)
-{
+module.exports = (message, code) => {
+    
     let err = new Error(message);
     err.name = ErrorTypes.SERVER_ERROR;
     err.code = code;

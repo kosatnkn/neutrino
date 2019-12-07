@@ -3,38 +3,38 @@
 const _consoleLogger = require('./_console');
 // const _fileLogger = require('./_file');
 
-function debug(message)
-{
+function debug(message) {
+
     _consoleLogger.debug(message);
     // _fileLogger.debug(message);
 }
 
-function error(message)
-{
+function error(message) {
+
     _consoleLogger.error(message);
     // _fileLogger.error(message);
 }
 
-function help(message)
-{
+function help(message) {
+
     _consoleLogger.help(message);
     // _fileLogger.help(message);
 }
 
-function info(message)
-{
+function info(message) {
+
     _consoleLogger.info(message);
     // _fileLogger.info(message);
 }
 
-function prompt(message)
-{
+function prompt(message) {
+
     _consoleLogger.prompt(message);
     // _fileLogger.prompt(message);
 }
 
-function warn(message)
-{
+function warn(message) {
+    
     _consoleLogger.warn(message);
     // _fileLogger.warn(message);
 }

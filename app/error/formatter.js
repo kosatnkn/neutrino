@@ -10,10 +10,10 @@ const ResponseCodes = require('http-status-codes');
  * @returns {{code, message}|*}
  * @private
  */
-function format(err)
-{
-    switch(err.name)
-    {
+function format(err) {
+
+    switch(err.name){
+
         case ErrorTypes.DOMAIN_ERROR:
             return _formatDomainError(err);
 
@@ -27,7 +27,6 @@ function format(err)
             return _formatUnknownError(err);
     }
 }
-
 
 /**
  * Format domain error.
@@ -44,8 +43,7 @@ function _formatDomainError(err)
         "type": err.name
     };
 
-    if(process.env.APP_DEBUG === 'true')
-    {
+    if(process.env.APP_DEBUG === 'true') {
         error.trace = err.stack;
     }
 
@@ -59,7 +57,6 @@ function _formatDomainError(err)
     };
 }
 
-
 /**
  * Format validation error.
  *
@@ -67,8 +64,8 @@ function _formatDomainError(err)
  * @returns {{code: number, message: string}}
  * @private
  */
-function _formatValidationError(err)
-{
+function _formatValidationError(err) {
+
     let details = {
         "errors": err.details
     };
@@ -79,7 +76,6 @@ function _formatValidationError(err)
     };
 }
 
-
 /**
  * Format server error.
  *
@@ -87,16 +83,15 @@ function _formatValidationError(err)
  * @returns {{code: number, message: string}}
  * @private
  */
-function _formatServerError(err)
-{
+function _formatServerError(err) {
+
     let error = {
         "message": err.message,
         "code": err.code,
         "type": err.name
     };
 
-    if(process.env.APP_DEBUG === 'true')
-    {
+    if(process.env.APP_DEBUG === 'true') {
         error.trace = err.stack;
     }
 
@@ -109,7 +104,6 @@ function _formatServerError(err)
         message: message
     };
 }
-
 
 /**
  * Format unknown error.
@@ -118,16 +112,15 @@ function _formatServerError(err)
  * @returns {{code: number, message: string}}
  * @private
  */
-function _formatUnknownError(err)
-{
+function _formatUnknownError(err) {
+
     let error = {
         "message": err.message,
         "code": err.code,
         "type": err.name
     };
 
-    if(process.env.APP_DEBUG === 'true')
-    {
+    if(process.env.APP_DEBUG === 'true') {
         error.trace = err.stack;
     }
 
@@ -140,7 +133,6 @@ function _formatUnknownError(err)
         message: message
     };
 }
-
 
 module.exports = {
     format: format

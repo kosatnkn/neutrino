@@ -7,25 +7,23 @@ const omittedRoutes = [
     '/favicon.ico'
 ];
 
-function handle(req, res, next)
-{
+function handle(req, res, next) {
+
     // omitted out routes
-    if(omittedRoutes.indexOf(req.url) > -1)
-    {
+    if(omittedRoutes.indexOf(req.url) > -1) {
+        
         next();
 
         return;
     }
 
-    if('application/json' !== req.get('content-type'))
-    {
+    if('application/json' !== req.get('content-type')) {
         throw serverError("API only accepts JSON");
     }
 
     next();
 }
 
-module.exports = function (app)
-{
+module.exports = (app) => {
     app.use(handle);
 };

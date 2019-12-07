@@ -2,8 +2,7 @@
 
 const domainError = require('./../../errors/domain_error');
 
-function testError()
-{
+function testError() {
     return domainError("test error", 0);
 }
 

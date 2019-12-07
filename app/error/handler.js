@@ -12,8 +12,8 @@ const logger = require('./../logger');
  * @param next
  * @private
  */
-function handle(err, req, res, next)
-{
+function handle(err, req, res, next) {
+    
     let formattedError = formatter.format(err);
 
     logger.error(err.stack);
@@ -23,7 +23,6 @@ function handle(err, req, res, next)
 }
 
 
-module.exports = function (app)
-{
+module.exports = (app) => {
     app.use(handle);
 };

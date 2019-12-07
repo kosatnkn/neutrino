@@ -1,3 +1,5 @@
+"use strict";
+
 const _mapper = require('./_mapper');
 const _transformer = require('./_transformer');
 

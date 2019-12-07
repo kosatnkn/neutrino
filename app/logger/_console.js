@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  * Console logger will log to the console.
  */

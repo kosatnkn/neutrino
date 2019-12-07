@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  * File logger will log to a file in storage.
  *

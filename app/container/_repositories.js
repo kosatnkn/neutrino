@@ -1,3 +1,5 @@
+"use strict";
+
 const testRepository = require('./../../externals/repositories/test_repository');
 
 function resolve(container)

@@ -1,5 +1,7 @@
+"use strict";
+
 const _consoleLogger = require('./_console');
-const _fileLogger = require('./_file');
+// const _fileLogger = require('./_file');
 
 function debug(message)
 {

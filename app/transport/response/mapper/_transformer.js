@@ -1,3 +1,5 @@
+"use strict";
+
 function transform(data, transformer, asCollection)
 {
     asCollection = asCollection || false;

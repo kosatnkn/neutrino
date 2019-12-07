@@ -1,3 +1,5 @@
+"use strict";
+
 function resolve(container)
 {
     container.services = {

@@ -1,3 +1,5 @@
+"use strict";
+
 const DomainErrorTypes = require('./../../domain/errors/types');
 
 const ErrorTypes = {

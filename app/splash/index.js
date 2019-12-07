@@ -1,3 +1,5 @@
+"use strict";
+
 // NOTE: make sure you escape backslashes (\)
 const Shadow =
 `  \\  |            |       _)      

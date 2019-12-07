@@ -1,3 +1,5 @@
+"use strict";
+
 const formatter = require('./formatter');
 const logger = require('./../logger');
 

@@ -1,3 +1,5 @@
+"use strict";
+
 const _adapters = require('./_adapters');
 const _repositories = require('./_repositories');
 const _services = require('./_services');

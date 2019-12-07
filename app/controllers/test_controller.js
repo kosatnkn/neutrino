@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = function(app)
 {
     const responseCodes = require('http-status-codes');
@@ -27,11 +29,11 @@ module.exports = function(app)
      */
     function testControllerMethod(req, res)
 	{
-	    let test = new Test;
-	    test.firstName = "First";
-	    test.lastName = "Last";
+        let test = new Test;
+        test.firstName = "First";
+        test.lastName = "Last";
 
-	    res.send(testUseCase.testMethodThree(test));
+        res.send(testUseCase.testMethodThree(test));
 	}
 
 
@@ -118,8 +120,8 @@ module.exports = function(app)
 
 
 	return {
-	    testControllerMethod: testControllerMethod,
-	    testControllerErrorMethod: testControllerErrorMethod,
+        testControllerMethod: testControllerMethod,
+        testControllerErrorMethod: testControllerErrorMethod,
         testControllerValidateMethod: testControllerValidateMethod,
         testDatabase: testDatabase,
         testTransformData: testTransformData

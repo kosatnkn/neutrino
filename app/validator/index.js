@@ -1,6 +1,7 @@
+"use strict";
+
 const validationError = require('./validation_error');
 const validator = require('validate.js');
-
 
 function validate(data, rules)
 {

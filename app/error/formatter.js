@@ -1,3 +1,5 @@
+"use strict";
+
 const ErrorTypes = require('./types');
 const ResponseCodes = require('http-status-codes');
 

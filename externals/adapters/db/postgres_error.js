@@ -1,3 +1,5 @@
+"use strict";
+
 const serverError = require('./../../../app/error/server_error');
 
 function unknownError()

@@ -1,3 +1,5 @@
+"use strict";
+
 // prevent this file from executing directly
 if (require.main === module)
 {

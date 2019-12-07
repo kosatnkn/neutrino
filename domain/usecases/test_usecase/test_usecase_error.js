@@ -1,3 +1,5 @@
+"use strict";
+
 const domainError = require('./../../errors/domain_error');
 
 function testError()

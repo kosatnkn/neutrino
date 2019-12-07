@@ -1,3 +1,5 @@
+"use strict";
+
 const serverError = require('../error/server_error');
 
 const omittedRoutes = [

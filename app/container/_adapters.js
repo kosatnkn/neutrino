@@ -1,3 +1,5 @@
+"use strict";
+
 const postgres = require('./../../externals/adapters/db/postgres');
 
 function resolve(container)

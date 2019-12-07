@@ -1,3 +1,5 @@
+"use strict";
+
 const ErrorTypes = require('./types');
 
 module.exports = function (message, code)

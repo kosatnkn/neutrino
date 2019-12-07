@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = function (config)
 {
     const pg = require("pg");
@@ -70,16 +72,12 @@ module.exports = function (config)
         {
             case ErrorCodes.CONNECTION_ERROR:
                 return dbAdapterError.connectionError();
-                break;
             case ErrorCodes.CONNECTION_REFUSED:
                 return dbAdapterError.connectionError();
-                break;
             case ErrorCodes.DATABASE_NOT_FOUND:
                 return dbAdapterError.connectionError();
-                break;
             default:
                 return dbAdapterError.unknownError();
-                break;
         }
     }
 

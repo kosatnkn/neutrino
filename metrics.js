@@ -1,3 +1,5 @@
+"use strict";
+
 /*
 * Create dedicated HTTP server to expose application metrics.
 */

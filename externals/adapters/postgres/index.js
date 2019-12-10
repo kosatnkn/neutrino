@@ -3,7 +3,8 @@
 module.exports = (config) => {
     
     const pg = require("pg");
-    const dbAdapterError = require('./postgres_error');
+    const validator = require('validate.js');
+    const dbAdapterError = require('./errors');
 
     // known error codes sent from postgres
     const ErrorCodes = {
@@ -11,6 +12,8 @@ module.exports = (config) => {
         DATABASE_NOT_FOUND: '3D000',
         CONNECTION_REFUSED: 'ECONNREFUSED'
     };
+
+    _checkConfig(config);
 
     let pool = _getPool(config);
 
@@ -35,6 +38,8 @@ module.exports = (config) => {
 
     /**
      * Get the database pool.
+     * 
+     * @param {*} config 
      */
     function _getPool(config) {
 
@@ -58,6 +63,56 @@ module.exports = (config) => {
             // by default this is set to 10.
             max: 10
         });
+    }
+
+    /**
+     * Check whether configurations are valid.
+     * 
+     * @param {*} config 
+     */
+    function _checkConfig(config) {
+
+        let rules = {
+            user: {
+                presence: true,
+                length: {
+                    minimum: 1
+                }
+            },
+            host: {
+                presence: true,
+                length: {
+                    minimum: 1
+                }
+            },
+            database: {
+                presence: true,
+                length: {
+                    minimum: 1
+                }
+            },
+            password: {
+                presence: true,
+                length: {
+                    minimum: 1  
+                }
+            },
+            port: {
+                presence: true,
+                numericality: {
+                    onlyInteger: true,
+                    greaterThan: 0
+                }
+            }
+        };
+
+        let details = validator.validate(config, rules);
+
+        if(details === undefined) {
+            return;
+        }
+
+        throw dbAdapterError.configError(details);
     }
 
     /**

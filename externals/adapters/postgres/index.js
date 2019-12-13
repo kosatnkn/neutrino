@@ -3,7 +3,8 @@
 module.exports = (config) => {
     
     const pg = require("pg");
-    const dbAdapterError = require('./postgres_error');
+    const validator = require('./validator');
+    const errors = require('./errors');
 
     // known error codes sent from postgres
     const ErrorCodes = {
@@ -12,14 +13,18 @@ module.exports = (config) => {
         CONNECTION_REFUSED: 'ECONNREFUSED'
     };
 
+    // check whether configuration values are valid
+    validator.validateConfig(config);
+
+    // create db pool
     let pool = _getPool(config);
 
     /**
      * Run a query.
      * 
-     * @param {*} query 
+     * @param {string} query 
      * @param {*} parameters 
-     * @param {*} resultCallback 
+     * @param {Function} resultCallback 
      */
     function query(query, parameters, resultCallback) {
 
@@ -35,6 +40,8 @@ module.exports = (config) => {
 
     /**
      * Get the database pool.
+     * 
+     * @param {*} config 
      */
     function _getPool(config) {
 
@@ -63,20 +70,20 @@ module.exports = (config) => {
     /**
      * Translate a postgres error to a standard DBAdapter error.
      * 
-     * @param {*} err 
+     * @param {Error} err 
      */
     function _getError(err) {
 
         switch(err.code) {
             
             case ErrorCodes.CONNECTION_ERROR:
-                return dbAdapterError.connectionError();
+                return errors.connectionError();
             case ErrorCodes.CONNECTION_REFUSED:
-                return dbAdapterError.connectionError();
+                return errors.connectionError();
             case ErrorCodes.DATABASE_NOT_FOUND:
-                return dbAdapterError.connectionError();
+                return errors.connectionError();
             default:
-                return dbAdapterError.unknownError();
+                return errors.unknownError();
         }
     }
 

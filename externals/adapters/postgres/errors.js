@@ -1,9 +1,13 @@
 "use strict";
 
-const serverError = require('./../../../app/error/server_error');
+const serverError = require('../../../app/error/server_error');
 
 function unknownError() {
     return serverError("Unknown database adapter error", 0);
+}
+
+function configError(details) {
+    return serverError(`DB config error ${JSON.stringify(details)}`, 0);
 }
 
 function connectionError() {
@@ -16,6 +20,7 @@ function queryExecutionError() {
 
 module.exports = {
     unknownError: unknownError,
+    configError: configError,
     connectionError: connectionError,
     queryExecutionError: queryExecutionError
 };

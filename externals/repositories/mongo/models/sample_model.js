@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 const name = "sample";
 
-const SampleSchema = new Schema({
+const schema = new Schema({
     name: String,
     email: String,
     password: String,
@@ -13,5 +13,5 @@ const SampleSchema = new Schema({
 });
 
 module.exports = (dbAdapter) => {
-    return dbAdapter.getModel(name, SampleSchema);
+    return dbAdapter.getModel(name, schema);
 }

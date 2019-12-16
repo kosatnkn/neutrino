@@ -11,4 +11,16 @@ const config = {
 const dbAdapter = require('./externals/adapters/mongo')(config);
 const sampleRepository = require('./externals/repositories/mongo/sample_repository')(dbAdapter);
 
-sampleRepository.create();
+sampleRepository.create((err, result) => {
+
+    if(err) {
+                
+        console.log(err);
+        return;
+    }
+    
+    console.log(result);
+    
+});
+
+

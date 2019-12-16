@@ -10,7 +10,8 @@ function resolve(container) {
             port: process.env.DB_POSTGRES_PORT,
             database: process.env.DB_POSTGRES_DATABASE,
             user: process.env.DB_POSTGRES_USER,
-            password: process.env.DB_POSTGRES_PASSWORD
+            password: process.env.DB_POSTGRES_PASSWORD,
+            pool: process.env.DB_POSTGRES_POOL
         })
     }
 }

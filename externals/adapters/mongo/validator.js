@@ -11,19 +11,26 @@ const errors = require('./errors');
     function validateConfig(config) {
 
         let rules = {
-            user: {
-                presence: true,
-                length: {
-                    minimum: 1
-                }
-            },
             host: {
                 presence: true,
                 length: {
                     minimum: 1
                 }
             },
+            port: {
+                presence: true,
+                numericality: {
+                    onlyInteger: true,
+                    greaterThan: 0
+                }
+            },
             database: {
+                presence: true,
+                length: {
+                    minimum: 1
+                }
+            },
+            user: {
                 presence: true,
                 length: {
                     minimum: 1
@@ -35,7 +42,7 @@ const errors = require('./errors');
                     minimum: 1  
                 }
             },
-            port: {
+            pool: {
                 presence: true,
                 numericality: {
                     onlyInteger: true,

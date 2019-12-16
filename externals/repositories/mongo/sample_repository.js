@@ -4,7 +4,7 @@ module.exports = (dbAdapter) => {
 
     const SampleModel = require('../mongo/models/sample_model')(dbAdapter);
     
-    function create() {
+    function create(resultCallback) {
 
         let sample = new SampleModel({
             name: "Sample Name",
@@ -16,12 +16,10 @@ module.exports = (dbAdapter) => {
         sample.save((err, result) => {
 
             if(err) {
-                
-                console.log(err);
-                return;
+                return resultCallback(err, null);
             }
 
-            console.log(result);
+            return resultCallback(null, result);
         });
     }
 

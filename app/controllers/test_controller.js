@@ -77,10 +77,10 @@ module.exports = (app) => {
      */
     function testDatabase(req, res) {
 
-        testUseCase.testMethodDatabase(function (err, result) {
+        testUseCase.testMethodDatabase((err, result) => {
 
             if(err) {
-
+                
                 asyncErrorHandler.handle(err, res);
                 return;
             }

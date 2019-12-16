@@ -10,7 +10,7 @@ module.exports = (dbAdapter) => {
                 return resultCallback(err, null);
             }
 
-            return resultCallback(false, result.rows);
+            return resultCallback(null, result.rows);
         });
     }
 

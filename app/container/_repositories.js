@@ -1,6 +1,6 @@
 "use strict";
 
-const testRepository = require('./../../externals/repositories/test_repository');
+const testRepository = require('./../../externals/repositories/postgres/test_repository');
 
 function resolve(container) {
     

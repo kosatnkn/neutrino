@@ -1,6 +1,6 @@
 {
   "name": "neutrino",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A NodeJS Clean Architecture sample project",
   "license": "MIT",
   "main": "service.js",

@@ -113,6 +113,9 @@ require('./app/error/async_handler')(app);
 |
 */
 
+// allow cross origin calls
+require('./app/middleware/cors_middleware')(app);
+
 // check whether input is JSON
 require('./app/middleware/request_check_middleware')(app);
 

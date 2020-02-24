@@ -2,7 +2,7 @@
 
 module.exports = (testRepository) => {
     
-    const testUseCaseErrors = require('./test_usecase_error');
+    const testUseCaseErrors = require('./_error');
 
     /**
      * Private method.

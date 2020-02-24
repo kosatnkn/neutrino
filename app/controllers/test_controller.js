@@ -16,7 +16,7 @@ module.exports = (app) => {
     const testTransformer = require('./../transformers/test_transformer');
 
     // constructor ___
-    const testUseCase = require('./../../domain/usecases/test_usecase/test_usecase')(
+    const testUseCase = require('./../../domain/usecases/sample/test_usecase')(
         container.repositories.test
     );
 

@@ -1,12 +1,12 @@
 "use strict";
 
+const mongoose = require('mongoose');
+const validator = require('./validator');
+    
 module.exports = (config) => {
-    
-    const mongoose = require('mongoose');
-    // const validator = require('./validator');
-    
+        
     // validate configurations
-    // validator.validateConfig(config);
+    validator.validateConfig(config);
 
     // create db pool
     let pool = _getPool(config);

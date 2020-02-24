@@ -1,9 +1,9 @@
 "use strict";
 
+const testUseCaseErrors = require('./_error');
+
 module.exports = (testRepository) => {
     
-    const testUseCaseErrors = require('./_error');
-
     /**
      * Private method.
      *

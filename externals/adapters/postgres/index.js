@@ -1,11 +1,11 @@
 "use strict";
 
+const pg = require("pg");
+const validator = require('./validator');
+const errors = require('./errors');
+
 module.exports = (config) => {
     
-    const pg = require("pg");
-    const validator = require('./validator');
-    const errors = require('./errors');
-
     // known error codes sent from postgres
     const ErrorCodes = {
         CONNECTION_ERROR: '28P01',

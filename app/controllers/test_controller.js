@@ -1,22 +1,19 @@
 "use strict";
 
+const responseCodes = require('http-status-codes');
+const testTransformer = require('./../transformers/test_transformer');
+const Test = require('./../../domain/entities/test_entity');
+const TestUseCase = require('./../../domain/usecases/sample/test_usecase');
+
 module.exports = (app) => {
     
-    const responseCodes = require('http-status-codes');
-
     const container = app.get('container');
     const validator = app.get('validator');
     const responseMapper = app.get('response_mapper');
     const asyncErrorHandler = app.get('async_error_handler');
 
-    // entities ___
-    const Test = require('./../../domain/entities/test_entity');
-
-    // transformers ___
-    const testTransformer = require('./../transformers/test_transformer');
-
-    // constructor ___
-    const testUseCase = require('./../../domain/usecases/sample/test_usecase')(
+    // usecases ___
+    const testUseCase = TestUseCase(
         container.repositories.test
     );
 

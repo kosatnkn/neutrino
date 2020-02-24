@@ -29,8 +29,7 @@ module.exports = (config) => {
     function _getPool(config) {
 
         let connectionString = `mongodb://${config.host}:${config.port}`;
-        // let connectionString = `mongodb://${config.user}:${config.password}@${config.host}:${config.port}/${config.database}`;
-
+        
         // NOTE: configure mongoose connection pool
         // https://mongoosejs.com/docs/connections.html
         let options = {

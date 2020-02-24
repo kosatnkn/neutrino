@@ -1,8 +1,8 @@
 "use strict";
 
-module.exports = (app) => {
+const responseCodes = require('http-status-codes');
     
-    const responseCodes = require('http-status-codes');
+module.exports = (app) => {
     
     const responseMapper = app.get('response_mapper');
     

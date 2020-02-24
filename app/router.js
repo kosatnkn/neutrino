@@ -1,11 +1,14 @@
 "use strict";
 
+const InfoController = require('./controllers/info_controller');
+const TestController = require('./controllers/test_controller');
+
 module.exports = (app) => {
     
     // constructor ___
-    const infoController = require('./controllers/info_controller')(app);
-    const testController = require('./controllers/test_controller')(app);
-
+    const infoController = InfoController(app);
+    const testController = TestController(app);
+    
     // api info
     app.get('/', infoController.getInfo);
 

@@ -12,9 +12,13 @@ const ResponseCodes = require('http-status-codes');
  */
 function format(err) {
 
-    switch(err.name){
+    switch(err.name) {
 
+        case ErrorTypes.MIDDLEWARE_ERROR:        
         case ErrorTypes.DOMAIN_ERROR:
+        case ErrorTypes.ADAPTER_ERROR:
+        case ErrorTypes.REPOSITORY_ERROR:
+        case ErrorTypes.SERVICE_ERROR:
             return _formatDomainError(err);
 
         case ErrorTypes.VALIDATION_ERROR:

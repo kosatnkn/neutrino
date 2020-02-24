@@ -1,5 +1,6 @@
 "use strict";
 
+const cors = require('cors');
 const InfoController = require('./controllers/info_controller');
 const TestController = require('./controllers/test_controller');
 
@@ -9,6 +10,9 @@ module.exports = (app) => {
     const infoController = InfoController(app);
     const testController = TestController(app);
     
+    // enable preflight for all routes
+    app.options('*', cors());
+
     // api info
     app.get('/', infoController.getInfo);
 
